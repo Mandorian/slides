@@ -4,7 +4,7 @@ separator: <!--s-->
 verticalSeparator: <!--v-->
 theme: simple
 highlightTheme: github
-css: custom.css
+css: assets/css/custom.css
 revealOptions:
     transition: 'slide'
     transitionSpeed: fast
