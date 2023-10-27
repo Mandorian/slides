@@ -6,7 +6,7 @@ theme: simple
 highlightTheme: github
 css: assets/css/custom.css
 revealOptions:
-    transition: 'slide'
+    transition: 'fade'
     transitionSpeed: fast
     center: false
     slideNumber: "c/t"
@@ -27,10 +27,35 @@ by [@Jwanng](https://github.com/Mandorian)
 
 <!--v-->
 ## 主要内容
+<div class="fragment">
+
 + 函数
+</div>
+
+<div class="fragment">
+
 + 结构体
+  <div class="fragment">
+  
+  + 结构体排序
+  </div>
+</div>
+
+<div class="fragment">
+
 + 最大公约数
+  <div class="fragment">
+
+  + 欧几里德算法
+  + 辗转相除法
+  </div>
+
+</div>
+
+<div class="fragment">
+
 + 最小公倍数
+</div>
 
 <!--s-->
 <div class="middle center">
@@ -126,15 +151,54 @@ struct Point {
 
 <!--v-->
 ## 结构体排序
+对于结构体排序，常常会选用结构体中的某一变量为标准进行排序，我们可以仿照一维数组的冒泡排序（从小到大）。    
+假设我们有一个`struct Point`数组，按照其$x$坐标从小到大排序。
+``` c[0|3-6]
+for (int i = 1; i < n; ++ i) {
+    for (int j = 0; j < n - i; ++ j) {
+        if (point[j].x > point[j + 1].x) {
+            struct Point temp = point[j];
+            point[j] = point[j + 1];
+            point[j + 1] = temp;
+        }
+    }
+}
+```
 
 <!--s-->
 <div class="middle center">
 <div style="width: 100%">
 
-# 最大公约数(GCD)                                                                                                                                    
+# 最大公约数(GCD)                                                                                                                             
 </div>
 </div>
 
+<!--v-->
+## 定义
+最大公约数即为 ***Greatest Common Divisor***，常缩写为 gcd。  
+一组整数的公约数，是指同时是这组数中每一个数的约数的数。一组整数的最大公约数，是指所有公约数里面最大的一个。    
+
+$a|b$则称$a$为$b$的约数，$b$为$a$的倍数。
+
+如何求两个数甚至多个数的最大公约数呢？
+
+<div class="fragment">
+
++ 欧几里德算法（辗转相除法）
+</div>
+
+<div class="fragment">
+
++ 更相减损术
+</div>
+
+<!--v-->
+## 欧几里德算法
+假设已知两个数$a$和$b$，如何求出二者的最大公约数？  
+
+假设$a>b$,若$b$是$a$的约数可以得到$gcd(a,b)=b$，下面考虑$b$不是$a$的约数的情况，可以证明$gcd(a,b)=gcd(b,a\\% b)$。  
+
+证明如下：
 <!--s-->
 <div class="middle center">
 <div style="width: 100%">
