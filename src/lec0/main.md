@@ -16,7 +16,7 @@ revealOptions:
 <div class="middle center">
 <div style="width: 100%">
 
-# C Language Introduction
+# The   C Language 
 
 <hr />
 
@@ -98,11 +98,34 @@ struct Point {
     int x, y;
 };
 ```
+
+<div class="fragment">
+
 + 使用'struct Point point'来创建Point结构体变量
+</div>
+
+<div class="fragment">
+
 + 结构体的初始化可以使用初始化表来完成,如'point = {1, 2}'
+</div>
+
+<div class="fragment">
+
 + 使用'.'运算符来访问Point结构体内部变量,如'point.x 和 point.y'
+</div>
+
+<div class="fragment">
+
 + 使用`typedef`为结构体定义别名简化代码,如'typedef struct Point Point'
+</div>
+
+<div class="fragment">
+
 + 结构体也可以用作函数参数和函数返回值类型
+</div>
+
+<!--v-->
+## 结构体排序
 
 <!--s-->
 <div class="middle center">
