@@ -266,6 +266,5 @@ int lcm(int a, int b) {
 }
 ```
 
-
 <!--s-->
 <!-- .slide: data-background="./thanks.png" -->
