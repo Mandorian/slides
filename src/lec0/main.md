@@ -47,7 +47,7 @@ by [@Jwanng](https://github.com/Mandorian)
   <div class="fragment">
 
   + 欧几里德算法
-  + 辗转相除法
+  + 更相减损术
   </div>
 
 </div>
@@ -73,7 +73,7 @@ by [@Jwanng](https://github.com/Mandorian)
     主要内容
 }
 ```
-+ 返回类型可以是{int,float,double,long,void}等数据类型
++ 返回类型可以是{int，float，double，long，void，struct}等数据类型
 + 函数名命名规范:
 >
 
@@ -131,17 +131,17 @@ struct Point {
 
 <div class="fragment">
 
-+ 结构体的初始化可以使用初始化表来完成,如'point = {1, 2}'
++ 结构体的初始化可以使用初始化表来完成，如'point = {1, 2}'
 </div>
 
 <div class="fragment">
 
-+ 使用'.'运算符来访问Point结构体内部变量,如'point.x 和 point.y'
++ 使用'.'运算符来访问Point结构体内部变量，如'point.x 和 point.y'
 </div>
 
 <div class="fragment">
 
-+ 使用`typedef`为结构体定义别名简化代码,如'typedef struct Point Point'
++ 使用`typedef`为结构体定义别名简化代码，如'typedef struct Point Point'
 </div>
 
 <div class="fragment">
@@ -178,7 +178,7 @@ for (int i = 1; i < n; ++ i) {
 最大公约数即为 ***Greatest Common Divisor***，常缩写为 gcd。  
 一组整数的公约数，是指同时是这组数中每一个数的约数的数。一组整数的最大公约数，是指所有公约数里面最大的一个。    
 
-$a|b$则称$a$为$b$的约数，$b$为$a$的倍数。
+若$a\ |\ b$则称$a$为$b$的约数，$b$为$a$的倍数。
 
 如何求两个数甚至多个数的最大公约数呢？
 
@@ -196,9 +196,51 @@ $a|b$则称$a$为$b$的约数，$b$为$a$的倍数。
 ## 欧几里德算法
 假设已知两个数$a$和$b$，如何求出二者的最大公约数？  
 
-假设$a>b$,若$b$是$a$的约数可以得到$gcd(a,b)=b$，下面考虑$b$不是$a$的约数的情况，可以证明$gcd(a,b)=gcd(b,a\\% b)$。  
+假设$a>b$，若$b$是$a$的约数可以得到$gcd(a,b)=b$，下面考虑$b$不是$a$的约数的情况，可以证明$gcd(a,b)=gcd(b,a\\% b)$。  
 
-证明如下：
+证明如下：  
+
+<div class="fragment">
+
+假设$a=k\times b + c$，$d\ |\ a$，$d\ |\ b$，可以推出$d\ |\ a-b$，$d$是$a,b,a-b$的公约数，那么$gcd(a,b)=gcd(a-b,b)$。
+</div>
+
+<div class="fragment">
+
+可以推出$gcd(a-b,b)=gcd(a-2\times b, b)=...=gcd(a-k\times b, b)$。
+</div>
+
+<div class="fragment">
+
+$\because a-k\times b = c=a \\% b$  
+$\therefore gcd(a,b)=gcd(a\\% b, b)=gcd(b,a\\%b)$
+</div>
+
+<div class="fragment">
+
+根据上面的公式可以写出求两个数最大公约数的写法，可以采用递归or迭代。
+</div>
+
+<!--v-->
+``` c 
+// 递归写法
+int gcd(int a, int b) {
+    if (!b) return a;
+    return gcd(b, a % b);
+}
+```
+``` c
+// 迭代写法
+int gcd(int a, int b) {
+  while (b != 0) {
+    int tmp = a;
+    a = b;
+    b = tmp % b;
+  }
+  return a;
+}
+```
+
 <!--s-->
 <div class="middle center">
 <div style="width: 100%">
@@ -207,3 +249,23 @@ $a|b$则称$a$为$b$的约数，$b$为$a$的倍数。
 
 </div>
 </div>
+
+<!--v-->
+## 定义
+一组整数的公倍数，是指同时是这组数中每一个数的倍数的数。0 是任意一组整数的公倍数。  
+一组整数的最小公倍数，是指所有正的公倍数里面，最小的一个数。    
+
+结论：  
+对于任意两个数$a,b$有$gcd(a,b)\times lcm(a,b)=a\times b$。  
+
+可以得出$lcm(a,b)=\frac{a\times b}{gcd(a,b)}$
+
+``` c
+int lcm(int a, int b) {
+    return a / gcd(a, b) * b;
+}
+```
+
+
+<!--s-->
+<!-- .slide: data-background="./thanks.png" -->
