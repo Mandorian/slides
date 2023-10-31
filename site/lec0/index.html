@@ -21,7 +21,7 @@
 <div class="middle center">
 <div style="width: 100%">
 
-# The   C Language 
+# The C Language 
 
 <hr />
 
@@ -35,6 +35,11 @@ by [@Jwanng](https://github.com/Mandorian)
 <div class="fragment">
 
 + 函数
+</div>
+
+<div class="fragment">
+
++ 素数
 </div>
 
 <div class="fragment">
@@ -78,11 +83,18 @@ by [@Jwanng](https://github.com/Mandorian)
     主要内容
 }
 ```
-+ 返回类型可以是{int，float，double，long，void，struct}等数据类型
-+ 函数名命名规范:
+返回类型可以是{int，float，double，long，void，struct}等数据类型      
+
+函数名命名规范:
+  <div class="fragment">
+
   + 函数的命名应该尽量用英文表达出函数完成的功能——函数名应准确描述函数的功能
+  </div>
+
+  <div class="fragment">
+
   + 避免使用无意义或含义不清的动词为函数命名
-  + 
+  </div>
 
 </script></section><section data-markdown><script type="text/template">
 ## 常用函数
@@ -104,6 +116,89 @@ int gcd(int a, int b) {
 ``` c
 int lcm(int a, int b) {
     return a / gcd(a, b) * b;
+}
+```
+
+</script></section></section><section ><section data-markdown><script type="text/template">
+<div class="middle center">
+<div style="width: 100%">
+
+# 素数
+
+</div>
+</div>
+
+</script></section><section data-markdown><script type="text/template">
+## 简要
+设一个整数 $p\ne 0,\pm 1$，如果 $p$ 除了 $1$ 和他本身其外没有其他约数，那么称 $p$ 为素数。$p$和$-p$总是同为素数或者同为合数。如果没有特别说明，**素数总是指正的素数**。   
+
+素数的简单性质：   
+<div class="fragment">
+
++ 素数有无穷多个
+</div>
+
+<div class="fragment">
+
++ 对于合数$a$，一定存在素数$p\le\sqrt{a}$使得$p\mid a$。
+</div>
+
+<div class="fragment">
+
++ 所有大于$3$的素数都可以表示为$6n\pm 1$的形式。
+</div>
+
+<div class="fragment">
+
++ 大于$1$的整数$a$一定可以表示为素数的乘积
+</div>
+
+<div class="fragment">
+
++ $n$以内的素数个数我们用$\pi(n)$表示，$\pi(n)\sim \frac{n}{ln(n)}$
+</div>
+
+</script></section><section data-markdown><script type="text/template">
+## 判断素数
+我们可以根据素数的定义，可以用一个循环来判断一个数是不是素数。
+
+<div class="fragment">
+
+``` c
+int is_prime(int n) {
+    for (int i = 2; i < n; ++ i) {
+        if (n % i == 0) {
+            return 0;
+        }
+    }
+
+    return 1;
+}
+```
+</div>
+
+<div class="fragment">
+
+Q：有没有更快的方法？
+</div>
+
+<div class="fragment">
+
+A：有！而且不止一种。
+</div>
+
+</script></section><section data-markdown><script type="text/template">
+## 优化
+对于$i$，若$n\bmod i=0$，相应的有$n\bmod \frac{n}{i}=0$，可以看出$i$和$\frac{n}{i}$是$n$的一对约数，所以我们只需要判断到$\sqrt{n}$即可。
+``` c[2]
+int is_prime(int n) {
+    for (int i = 2; i < sqrt(n); ++ i) {
+        if (n % i == 0) {
+            return 0;
+        }
+    }
+
+    return 1;
 }
 ```
 
@@ -198,7 +293,7 @@ for (int i = 1; i < n; ++ i) {
 ## 欧几里德算法
 假设已知两个数$a$和$b$，如何求出二者的最大公约数？  
 
-假设$a>b$，若$b$是$a$的约数可以得到$gcd(a,b)=b$，下面考虑$b$不是$a$的约数的情况，可以证明$gcd(a,b)=gcd(b,a\\% b)$。  
+假设$a>b$，若$b$是$a$的约数可以得到$gcd(a,b)=b$，下面考虑$b$不是$a$的约数的情况，可以证明$gcd(a,b)=gcd(b,a\bmod b)$。  
 
 证明如下：  
 
@@ -214,8 +309,8 @@ for (int i = 1; i < n; ++ i) {
 
 <div class="fragment">
 
-$\because a-k\times b = c=a \\% b$  
-$\therefore gcd(a,b)=gcd(a\\% b, b)=gcd(b,a\\%b)$
+$\because a-k\times b = c=a\bmod b$  
+$\therefore gcd(a,b)=gcd(a\bmod b, b)=gcd(b,a\bmod b)$
 </div>
 
 <div class="fragment">
@@ -224,15 +319,7 @@ $\therefore gcd(a,b)=gcd(a\\% b, b)=gcd(b,a\\%b)$
 </div>
 
 </script></section><section data-markdown><script type="text/template">
-``` c 
-// 递归写法
-int gcd(int a, int b) {
-    if (!b) return a;
-    return gcd(b, a % b);
-}
-```
 ``` c
-// 迭代写法
 int gcd(int a, int b) {
   while (b != 0) {
     int tmp = a;
@@ -240,6 +327,16 @@ int gcd(int a, int b) {
     b = tmp % b;
   }
   return a;
+}
+```
+``` c
+int array_gcd(int array[], int n) {
+    int res = array[0];
+    for (int i = 1; i < n; ++ i) {
+        res = gcd(res, array[i]);
+    }
+
+    return res;
 }
 ```
 
