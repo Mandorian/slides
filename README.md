@@ -1,2 +1,7 @@
 # Acknowledgement
-[TonyCrane](https://github.com/TonyCrane/slide-template)佬的模板。
+[TonyCrane](https://github.com/TonyCrane/slide-template)
+
+# slides
++ 讲课
+  + The C Language
+    + lec0
