@@ -262,4 +262,4 @@ Python's ease of use and versatility make it a great choice for a wide range of 
 </div>
 
 <!--s-->
-<!-- .slide: data-background="../thanks.png" -->
+<!-- .slide: data-background="./thanks.png" -->
