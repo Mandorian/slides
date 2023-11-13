@@ -12,7 +12,7 @@ build:
 	@cp assets/logo.png site/lec0
 	@cp assets/logo.png site/lec1
 	@cp src/lec0/thanks.png site/lec0
-	@cp src/lec1/thanks.png site/lec0
+	@cp src/lec1/thanks.png site/lec1
 	@rm site/lec0/lec0.html
 	@rm site/lec1/lec1.html
 	@cp -r src/lec1/images site/lec0
