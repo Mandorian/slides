@@ -241,8 +241,6 @@ As the chart reveals, the usage of python language remains high.
 
 <!--v-->
 ## Current state and Outlook
-
-<div style="display: flex; justify-content: center;">
 <img src="images/how-is-python-used-v2.png" height="auto" width="400">
 </div>
 
