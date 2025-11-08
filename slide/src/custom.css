@@ -10,11 +10,11 @@
 .reveal .slide-number {
   font-size: 26px;
   border-radius: 5px;
-  background-color: rgba(0, 0, 0, .3);
+  background-color: rgba(0, 0, 0, .4);
 }
 
 .reveal .slides {
-  border: 1.5px #ddd solid;
+  border: 1.5px rgba(0, 0, 0, .25) solid;
   border-radius: 7px;
   text-align: left;
   font-weight: 300;
@@ -25,7 +25,7 @@
 }
 
 .reveal p, .reveal li, .reveal center {
-  font-size: 30px;
+  font-size: 25px;
 }
 .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
   font-weight: 700;
@@ -80,7 +80,7 @@
 }
 .reveal h1 {
   margin: 0 10 0 10;
-  font-size: 50px;
+  font-size: 55px;
 }
 .reveal .middle h1 {
   text-align: center;
@@ -119,7 +119,7 @@ section .center {
 }
 
 .reveal table {
-  font-size: 30px;
+  font-size: 25px;
   margin-top: 15px;
   margin-bottom: 15px;
 }
@@ -231,30 +231,48 @@ html.print-pdf .reveal pre code {
   font-size: 1em;
 }
 
-.reveal-viewport.reveal-scroll .slide-background {
-  width: var(--slide-width) !important;
-  height: var(--slide-height) !important;
+.reveal .slide-menu-button {
+  top: 30px;
 }
 
-.reveal-viewport.reveal-scroll .slides {
-  border: none;
+.slide-menu-wrapper .slide-menu {
+  background-color: #fff !important;
+}
+.slide-menu-wrapper .active-menu-panel li.active {
+  color: #000 !important;
+}
+.slide-menu-wrapper .slide-menu-item, .slide-menu-wrapper .slide-menu-item-vertical {
+  color: #555 !important;
+}
+.slide-menu-wrapper .active-menu-panel li.selected {
+  background-color: #ddd !important;
+  color: #000 !important;
+}
+.slide-menu-wrapper .slide-menu-item {
+  border-top: none !important;
+}
+.slide-menu-wrapper .slide-menu-items {
+  border-bottom: none !important;
+}
+.slide-menu-wrapper .slide-menu-panel a {
+  color: #000 !important;
+}
+.slide-menu-wrapper .slide-menu-toolbar > li {
+  color: #777 !important;
+}
+.slide-menu-wrapper .slide-menu-toolbar > li.active-toolbar-button {
+  color: #000 !important;
+  text-shadow: 0 1px white !important;
+}
+.slide-menu-wrapper .slide-menu-overlay.active {
+  opacity: 0.3 !important;
+}
+.slide-menu-wrapper .slide-menu.slide-menu--wide {
+  width: 450px !important;
 }
 
-.reveal-viewport.reveal-scroll .scroll-page-content {
-  width: var(--slide-width) !important;
-  height: var(--slide-height) !important;
-  top: 50% !important;
-  left: 50% !important;
-  opacity: 1 !important;
-  transform: scale(var(--slide-scale)) translate(-50%, -50%) !important;
-  transform-style: flat !important;
-  transform-origin: 0 0 !important;
-  border: 1.5px #ddd solid;
-  border-radius: 7px;
-}
-
-.reveal-viewport.reveal-scroll .scroll-page section {
-  top: unset !important;
-  left: unset !important;
-  transform: none !important;
+.reveal blockquote {
+  width: 80%;
+  font-style: normal;
+  background-color: #eef4ff;
 }
