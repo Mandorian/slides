@@ -2,12 +2,12 @@
 
 live:
 	@echo "Previewing main slides..."
-	@reveal-md lec2.md -w --scripts https://cdn.tonycrane.cc/heti/heti.js,heti_worker.js --template template.html || true
+	@reveal-md $(LEC).md -w --scripts https://cdn.tonycrane.cc/heti/heti.js,heti_worker.js --template template.html || true
 
 build:
 	@echo "Building main slides..."
-	@reveal-md lec2.md --scripts https://cdn.tonycrane.cc/heti/heti.js,heti_worker.js --template template.html --static ../site --assets-dir assets
-	@rm ../site/lec2.html
+	@reveal-md $(LEC).md --scripts https://cdn.tonycrane.cc/heti/heti.js,heti_worker.js --template template.html --static ../site --assets-dir assets
+	@rm ../site/$(LEC).html
 
 clean:
 	@echo "Cleaning up..."
