@@ -60,5 +60,12 @@
 			"</div>",
 			"$0",
 		]
+	},
+	"img": {
+		"scope": "markdown",
+		"prefix": "img",
+		"body": [
+			"<img src='' width= style='display: block; margin: 0 auto;'>"
+		]
 	}
 }
