@@ -53,7 +53,7 @@ RGB-D追踪是一种多模态物体追踪技术，它结合了RGB和深度数据
    $
    F_s=\sigma\left(f^{7\times7}([\mathrm{AvgPool}(\hat{F}_c);\mathrm{MaxPool}(\hat{F}_c)])\right)
    $
-<img src='lec2/HMADN.png' width=100% style='display: block; margin: 0 auto;'>
+<img src='./lec2/HMADN.png' width=100% style='display: block; margin: 0 auto;'>
 
 <!--v-->
 ## 特征分布聚合模块
@@ -62,7 +62,7 @@ RGB-D追踪是一种多模态物体追踪技术，它结合了RGB和深度数据
 + 特征调整 $ \hat{F}_i = F_i \otimes \sigma(FC_i(F_g)), \quad i \in \{R, D, S\} $
 + 特征融合
 
-<img src='lec2/FDA.png' width=90% style='display: block; margin: 0 auto;'>
+<img src='./lec2/FDA.png' width=90% style='display: block; margin: 0 auto;'>
 
 <!--s-->
 <div class="middle center">
@@ -83,12 +83,12 @@ RGB-D追踪是一种多模态物体追踪技术，它结合了RGB和深度数据
 <!--v-->
 ## 测试结果
 
-<img src='lec2/tests.png' width=40% style='display: block; margin: 0 auto;'>
-<img src='lec2/real_world_tests.png' width=45% style='display: block; margin: 0 auto;'>
+<img src='./lec2/tests.png' width=40% style='display: block; margin: 0 auto;'>
+<img src='./lec2/real_world_tests.png' width=45% style='display: block; margin: 0 auto;'>
 
 <!--v-->
 ## 消融实验
 
 <div style="display: flex; align-items: center; justify-content: center; height: 60vh;">
-  <img src='lec2/diif_components.png' style='max-height: 100%; max-width: 100%;'>
+  <img src='./lec2/diif_components.png' style='max-height: 100%; max-width: 100%;'>
 </div>

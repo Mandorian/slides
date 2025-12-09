@@ -26,10 +26,9 @@
 
 # 工作报告
 
-[王倓](https://github.com/Mandorian)
+<hr>
 
-<hr/>
-<img src='logo.png' width=30%>
+[王倓](https://github.com/Mandorian)
 
 </div>
 </div>
@@ -50,7 +49,7 @@
 + 整理了公开的测试基准，并在这些基准上测试了一些有代表性的RGBT跟踪器
 + 探讨了RGBT跟踪任务的未来研究方向，并对该领域的发展趋势提出了建议
 
-<img src='lec1/RGBTOverview.png' style='display: block; margin: 0 auto;'>
+<img src='./lec1/RGBTOverview.png' style='display: block; margin: 0 auto;'>
 
 <!--s-->
 <div class="middle center">
@@ -65,14 +64,14 @@
 ## Handcraft Features-Based
 传统的RGBT跟踪方法可以根据稀疏表示、热门排名、动态图、关联滤波进行大致分类。传统方法主要依靠手工制作的特征，如HOGs、[SIFT](https://lsxiang.github.io/Journey2SLAM/computer_vision/SIFT/)，结合卡尔曼滤波和粒子滤波等运动估计算法，来完成目标跟踪的任务。
 
-<img src='lec1/hogs.png' width=80% style='display: block; margin: 0 auto;'>
+<img src='./lec1/hogs.png' width=80% style='display: block; margin: 0 auto;'>
 
 <!--v-->
 ## Deep Feature-Based
 基于深度学习的跟踪方法优于其他方法，比手动提取特征更有效和鲁棒，对于不同的模态，可以使用相同的CNN提取特征，也可以使用不同的CNN网络提取特征(DFNet、HATFNet)。\
 在特征提取阶段，连续下采样限制了cnn的接受域，使得局部卷积核难以捕获全局特征表示。Transformer架构的核心概念是利用注意力机制，通过编码器和解码器的协同努力，将一个序列转换为另一个序列。该架构可以准确定位序列中的关键部分，突破传统CNN网络有限的接受野范围，从输入序列中获得全局信息(MACFT、BAT、TATrack)。
 
-<img src='lec1/feature.png' width=50% style='display: block; margin: 0 auto;'>
+<img src='./lec1/feature.png' width=50% style='display: block; margin: 0 auto;'>
 
 <!--s-->
 <div class="middle center">
@@ -88,7 +87,7 @@
 像素级融合是将RGB和热红外模式图像合并成复合图像，像素级融合策略旨在在RGB和TIR数据中存在的突出线索和低频信息之间取得平衡(MDLatLRR、mfDiMP)。\
 像素级融合方法很直接，但它保留了源图像的大部分信息，同时引入了相当大的噪声，影响了跟踪器的性能。此外，处理时间较长，导致RGBT跟踪算法的速度明显降低。
 
-<img src='lec1/pixel_level.png' width=80% style='display: block; margin: 0 auto;'>
+<img src='./lec1/pixel_level.png' width=80% style='display: block; margin: 0 auto;'>
 
 <!--v-->
 ## Feature Level
@@ -96,7 +95,7 @@
 特征级融合将提取的RGB和热红外特征按照预设规则进行融合，生成融合特征。CAT、ADRNet和APFNet侧重于解决特定模态的挑战。\
 利用Transformer的编码器和解码器模块来获得目标的全局信息。随后，它使用互补的语义融合模块集成来自两种模式的信息，从而实现鲁棒跟踪(DFMTNet)。
 
-<img src='lec1/feature_level.png' width=80% style='display: block; margin: 0 auto;'>
+<img src='./lec1/feature_level.png' width=80% style='display: block; margin: 0 auto;'>
 
 <!--v-->
 ## Decision Level
@@ -104,7 +103,7 @@
 首先分别对RGB模态图像和热红外模态图像进行跟踪，然后对跟踪结果进行合并，以获得最优的跟踪性能。\
 与特征级融合相比，决策级融合通过考虑各种模式的决策结果进行加权融合，提供了更大的灵活性。决策级融合忽略了不同模态之间的相关性，导致信息丢失，计算复杂度高，在跟踪速度上没有优势。
 
-<img src='lec1/decision_level.png' width=80% style='display: block; margin: 0 auto;'>
+<img src='./lec1/decision_level.png' width=80% style='display: block; margin: 0 auto;'>
 
 <!--s-->
 ## Discriminant Module
@@ -138,7 +137,7 @@
 
 <!--v-->
 
-<img src="lec1/analysis.png" width=50% style='display: block; margin: 0 auto;'>
+<img src='./lec1/analysis.png' width=50% style='display: block; margin: 0 auto;'>
 
 <!--s-->
 ## Future Outlook
@@ -159,6 +158,7 @@
     <script src="./plugin/zoom/zoom.js"></script>
     <script src="./plugin/notes/notes.js"></script>
     <script src="./plugin/math/math.js"></script>
+    <script src="https://cdn.tonycrane.cc/heti/heti.js"></script>
     <script>
       function extend() {
         var target = {};
@@ -196,12 +196,21 @@
       var options = extend(defaultOptions, {"transition":"fade","transitionSpeed":"fast","center":false,"slideNumber":"c/t","width":1000,"_":["./src/lec1.md"],"scripts":"https://cdn.tonycrane.cc/heti/heti.js,js/heti_worker.js","template":"template.html","static":"../site/lec1","assets-dir":"assets","assetsDir":"assets"}, queryOptions);
     </script>
 
-    <script src="https://cdn.tonycrane.cc/heti/heti.js"></script>
-    <script src="./assets/js/heti_worker.js"></script>
-
     <script>
       Reveal.initialize(options).then(() => {
         document.querySelector(".backgrounds").setAttribute("style", document.querySelector(".slides").style.cssText);
+        
+        // Load heti_worker.js after Heti library is ready
+        function loadHetiWorker() {
+          if (typeof Heti !== 'undefined') {
+            const hetiScript = document.createElement('script');
+            hetiScript.src = 'assets/js/heti_worker.js';
+            document.head.appendChild(hetiScript);
+          } else {
+            setTimeout(loadHetiWorker, 100);
+          }
+        }
+        loadHetiWorker();
       });
       Reveal.on('overviewshown', event => {
         document.querySelector(".backgrounds").setAttribute("style", "");

@@ -39,7 +39,7 @@ revealOptions:
 
 首先分别从RGB图像和深度图像中提取特征，分别通过特征提取网络$F_{rgb}$和$F_{depth}$。随后，将参考帧（reference）与测试帧（test）的RGB和深度特征进行拼接与融合，得到融合后的多模态特征表示$D_{rgbd}$。融合后的特征输入到**Model Predictor**中生成追踪模型参数，测试特征输入到**Classifier**中，用于计算目标在搜索区域的响应图。该响应图的峰值位置对应目标的预测位置，实现多模态信息（RGB + Depth）的联合追踪。
 
-<img src='lec3/det.png' width=100% style='display: block; margin: 0 auto;'>
+<img src='./lec3/det.png' width=100% style='display: block; margin: 0 auto;'>
 
 <!--s-->
 <div class="middle center">
@@ -55,7 +55,7 @@ revealOptions:
 
 提出了一种在不重新训练模型的前提下，将**单目深度估计**结果提升到**高分辨率和高细节质量**的方法。对同一图像分别在低、高分辨率下推理，获得结构一致与细节丰富的两张深度图，再通过一个轻量的**U-Net**融合网络将两者的优势结合，生成既全局一致又细节清晰的深度图。使得传统网络能输出**多兆像素级**的高质量深度估计结果，显著提升边界清晰度与细节保真度。
 
-<img src='lec3/high_res_depth.png' width=85% style='display: block; margin: 0 auto;'>
+<img src='./lec3/high_res_depth.png' width=85% style='display: block; margin: 0 auto;'>
 
 <!--s-->
 <div class="middle center">
@@ -71,7 +71,7 @@ revealOptions:
 
 残差块里首先有2个有相同输出通道数的$3\times 3$卷积层。每个卷积层后接一个批量规范化层和**ReLU激活函数**。然后通过跨层数据通路，跳过这2个卷积运算，将输入直接加在最后的**ReLU激活函数**前。这样的设计要求2个卷积层的输出与输入形状一样，从而使它们可以相加。如果想改变通道数，就需要引入一个额外的卷积层来将输入变换成需要的形状后再做相加运算。残差块的实现如下：
 
-<img src='lec3/residual.png' width=60% style='display: block; margin: 0 auto;'>
+<img src='./lec3/residual.png' width=60% style='display: block; margin: 0 auto;'>
 
 <!--v-->
 ``` python
@@ -102,7 +102,7 @@ class Residual(nn.Module):
 
 通过配置不同的通道数和模块里的残差块数可以得到不同的ResNet模型。如ResNet50、ResNet152等。
 
-<img src='lec3/resnet.png' width=100% style='display: block; margin: 0 auto;'>
+<img src='./lec3/resnet.png' width=100% style='display: block; margin: 0 auto;'>
 
 <!--s-->
 <div class="middle center">

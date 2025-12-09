@@ -50,6 +50,7 @@
     <script src="{{{base}}}/plugin/zoom/zoom.js"></script>
     <script src="{{{base}}}/plugin/notes/notes.js"></script>
     <script src="{{{base}}}/plugin/math/math.js"></script>
+    <script src="https://cdn.tonycrane.cc/heti/heti.js"></script>
     <script>
       function extend() {
         var target = {};
@@ -87,13 +88,21 @@
       var options = extend(defaultOptions, {{{revealOptionsStr}}}, queryOptions);
     </script>
 
-    {{#scriptPaths}}
-    <script src="{{{.}}}"></script>
-    {{/scriptPaths}}
-
     <script>
       Reveal.initialize(options).then(() => {
         document.querySelector(".backgrounds").setAttribute("style", document.querySelector(".slides").style.cssText);
+        
+        // Load heti_worker.js after Heti library is ready
+        function loadHetiWorker() {
+          if (typeof Heti !== 'undefined') {
+            const hetiScript = document.createElement('script');
+            hetiScript.src = 'assets/js/heti_worker.js';
+            document.head.appendChild(hetiScript);
+          } else {
+            setTimeout(loadHetiWorker, 100);
+          }
+        }
+        loadHetiWorker();
       });
       Reveal.on('overviewshown', event => {
         document.querySelector(".backgrounds").setAttribute("style", "");

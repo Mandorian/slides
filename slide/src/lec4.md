@@ -37,7 +37,7 @@ revealOptions:
 <!--v-->
 ## 架构
 
-<img src='lec4/transformer.svg' width=45% style='display: block; margin: 0 auto;'>
+<img src='./lec4/transformer.svg' width=45% style='display: block; margin: 0 auto;'>
 
 <!--v-->
 ## 自注意力机制
@@ -46,7 +46,7 @@ revealOptions:
 $$
 \text{Attention}(Q, K, V) = \text{softmax}(\frac{QK^T}{\sqrt{d_k}}V)
 $$
-<img src='lec4/self_attention.png' width=30% style='display: block; margin: 0 auto;'>
+<img src='./lec4/self_attention.png' width=30% style='display: block; margin: 0 auto;'>
 
 <!--v-->
 ## 多头注意力
@@ -54,13 +54,13 @@ $$
 
 用独立学习得到不同的线性投影，来变换Q、K和V。将变换后的Q、K和V将并行地送到自注意力中。 最后，将输出拼接在一起，并且通过另一个全连接层以产生最终输出。  
 
-<img src='lec4/multi-head-attention.svg' width=50% style='display: block; margin: 0 auto;'>
+<img src='./lec4/multi-head-attention.svg' width=50% style='display: block; margin: 0 auto;'>
 
 <!--v-->
 ## ViT
 ViT将输入图片分为多个patch，再将每个patch投影为固定长度的向量送入Transformer，后续encoder的操作和原始Transformer中完全相同。但是因为对图片分类，因此在输入序列中加入一个特殊的token，该token对应的输出即为最后的类别预测
 
-<img src='lec4/vit.png' width=60% style='display: block; margin: 0 auto;'>
+<img src='./lec4/vit.png' width=60% style='display: block; margin: 0 auto;'>
 
 <!--s-->
 <div class="middle center">
@@ -78,7 +78,7 @@ ViT将输入图片分为多个patch，再将每个patch投影为固定长度的�
 
 它主要包括两个核心组件：GateNet和Experts。GateNet的作用在于判定输入样本应该由哪个专家模型接管处理。而Experts则构成了一组相对独立的专家模型，每个专家负责处理特定的输入子空间。
 
-<img src='lec4/moe.png' width=45% style='display: block; margin: 0 auto;'>
+<img src='./lec4/moe.png' width=45% style='display: block; margin: 0 auto;'>
 
 <!--s-->
 <div class="middle center">
@@ -93,5 +93,5 @@ ViT将输入图片分为多个patch，再将每个patch投影为固定长度的�
 LoRA（Low-Rank Adaptation）微调是一种用于调整大型预训练模型的高效微调技术。这种方法主要针对如何在保持模型大部分参数固定的同时，通过引入少量可训练参数来调整模型以适应特定任务。
 
 LoRA在RGB+多模态领域是一个低成本、高灵活的微调工具，既能高效适应新模态和新任务，又能促进跨模态特征融合，同时保持预训练模型的稳定性。
-<img src='lec4/algo.png' width=35% style='display: block; margin: 0 auto;'>
-<img src='lec4/lora.png' width=35% style='display: block; margin: 0 auto;'>
+<img src='./lec4/algo.png' width=35% style='display: block; margin: 0 auto;'>
+<img src='./lec4/lora.png' width=35% style='display: block; margin: 0 auto;'>
