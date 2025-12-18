@@ -67,5 +67,12 @@
 		"body": [
 			"<img src='' width= style='display: block; margin: 0 auto;'>"
 		]
+	},
+	"tab wrapper": {
+		"scope": "markdown",
+		"prefix": "tab",
+		"body": [
+			"&emsp;&emsp;"
+		]
 	}
 }
