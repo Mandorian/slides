@@ -20,7 +20,7 @@ revealOptions:
 
 <hr>
 
-[王倓](https://github.com/Mandorian) 2025.12.07
+[王倓](https://github.com/Mandorian) 2025.12.19
 
 </div>
 </div>
@@ -37,13 +37,9 @@ revealOptions:
 
 <!--v-->#
 ## 动机
-&emsp;&emsp;双流、双阶段跟踪框架分别提取模板和搜索区域特征，然后进行关系建模，因此提取的
-特征缺乏对目标的感知，目标-背景可判别性有限。
-
-&emsp;&emsp;模板和搜索区域之间没有交互作用，因此每张图像的提取特征都是在离线训练后确定的。这与目标的不断变化和任意性相违背，导致目标-背景判别能力有限。在某些情况下，当目标对象的类别不涉及训练数据集时，上述问题就会特别
-严重。其次，两流、两阶段的框架容易受到性能-速度困境的影响。根据特征
-融合模块的计算负担，通常采用两种不同的策略。
-<img src='./lec6/track_pipe.png' width=80% style='display: block; margin: 0 auto;'>
+&emsp;&emsp;双流、双阶段跟踪框架分别提取模板和搜索区域特征，然后进行关系建模，因此提取的特征缺乏对目标的感知，目标-背景可判别性有限。\
+&emsp;&emsp;模板和搜索区域之间没有交互作用，因此每张图像的提取特征都是在离线训练后确定的。这与目标的不断变化和任意性相违背，导致目标-背景判别能力有限。在某些情况下，当目标对象的类别不涉及训练数据集时，上述问题就会特别严重。双流、双阶段的框架容易受到性能-速度困境的影响。根据特征融合模块的计算负担，通常采用两种不同的策略。
+<img src='./lec6/track_pipe.png' width=75% style='display: block; margin: 0 auto;'>
 
 <!--v-->
 ## 创新点
@@ -62,7 +58,7 @@ revealOptions:
 <div class="middle center">
 <div style="width: 100%">
 
-# 核心原理
+# 核心模块
 
 </div>
 </div>
@@ -89,15 +85,3 @@ $$
 $w_x^{\phi}=\frac{1}{M}\sum_{m=1}^{M} w_x^{\phi}(m)$,
 作为目标与各搜索候选的最终相似度度量。仅保留$w_x^{\phi}$中排名前$k$的tokens，其余候选在该encoder层后被直接丢弃，为不影响后续回归头的特征重排，恢复保留tokens的原始顺序，并对被丢弃位置进行零填充。该模块可插入多个encoder层中，实现对背景候选的逐步消除，从而在显著减少计算量的同时避免无关背景对特征学习的负面影响。
 <img src='./lec6/elimate.png' width=80% style='display: block; margin: 0 auto;'>
-
-<!--v-->
-## Head and Loss
-
-<!--s-->
-<div class="middle center">
-<div style="width: 100%">
-
-# 实验 
-
-</div>
-</div>
