@@ -74,5 +74,13 @@
 		"body": [
 			"&emsp;&emsp;"
 		]
+	},
+	"fragment": {
+		"scope": "markdown",
+		"prefix": "frag",
+		"body": [
+			"<div class=\"fragment\">$1</div>",
+			"$0"
+		]
 	}
 }
