@@ -1,7 +1,7 @@
 .PHONY: live build clean
 
 SRC_DIRS := ./src
-OBJS := $(shell find $(SRC_DIRS) -name '*.md' | sed 's|^.*/||')
+OBJS := $(shell find $(SRC_DIRS) -name '*.md' | sed 's|^\./src/||')
 
 live:
 	@echo "Previewing main slides..."
@@ -15,14 +15,17 @@ build:
 
 all:
 	@for file in $(OBJS); do \
-		LEC=$${file%.md}; \
+		LEC=$${file##*/}; \
+		LEC=$${LEC%.md}; \
+		DIR=$${file%/*}; \
+		if [ "$$DIR" = "$$file" ]; then DIR=""; fi; \
 		reveal-md $(SRC_DIRS)/$$file \
 			--scripts https://cdn.tonycrane.cc/heti/heti.js,js/heti_worker.js \
 			--template template.html \
 			--static ../site/$$LEC \
 			--assets-dir assets; \
-		if [ -d "$(SRC_DIRS)/$$LEC" ]; then \
-			cp -r $(SRC_DIRS)/$$LEC ../site/$$LEC/ 2>/dev/null || true; \
+		if [ -d "$(SRC_DIRS)/$$DIR/$$LEC" ]; then \
+			cp -r $(SRC_DIRS)/$$DIR/$$LEC ../site/$$LEC/ 2>/dev/null || true; \
 		fi; \
 		if [ -f "../site/$$LEC/$$LEC.html" ]; then \
 			rm ../site/$$LEC/$$LEC.html; \
