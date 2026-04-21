@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>工作报告</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./dist/reset.css" />
+    <link rel="stylesheet" href="./dist/reveal.css" />
+    <link rel="stylesheet" href="./dist/theme/simple.css" id="theme" />
+    <link rel="stylesheet" href="./css/highlight/github.css" />
+
+    <link rel="stylesheet" href="./assets/custom/custom.css" />
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown data-separator="<!--s-->" data-separator-vertical="<!--v-->">
+          <textarea data-template>
+            
+
+<div class="middle center">
+<div style="width: 100%">
+
+# 工作汇报
+
+<hr>
+
+[王倓](https://github.com/Mandorian) 2026.02.09
+
+</div>
+</div>
+
+<!--s-->
+<div class="middle center">
+<div style="width: 100%">
+
+# Toward a dynamic tree-Mamba encoder for UAV tracking with vision-language
+
+</div>
+</div>
+
+<!--v-->
+
+<img src='./lec8/tree_mamba.png' width=70% style='display: block; margin: 0 auto;'>
+
+<div class="mul-cols">
+<div class="col">
+
+<img src='./lec8/tree_state.png' width=100% style='display: block; margin: 0 auto;'>
+
+</div>
+
+<div class="col">
+
+<img src='./lec8/online_update.png' width=100% style='display: block; margin: 0 auto;'>
+
+</div>
+
+</div>
+
+<!--s-->
+<div class="middle center">
+<div style="width: 100%">
+
+# Causal Spatio-Temporal Prediction: An Effective and Efficient Multi-Modal Approach
+
+</div>
+</div>
+
+<!--v-->
+
+<img src='./lec8/EE-CSTP.png' width=100% style='display: block; margin: 150px auto;'>
+
+
+<!--s-->
+
+<div class="middle center">
+<div style="width: 100%">
+
+# Towards Multimodal Sentiment Analysis via Hierarchical Correlation Modeling with Semantic Distribution Constraints
+
+</div>
+</div>
+
+<!--v-->
+<img src='./lec8/HCMNet.png' width=100% style='display: block; margin: 150px auto;'>
+          </textarea>
+        </section>
+      </div>
+    </div>   
+    <script src="./dist/reveal.js"></script>
+
+    <script src="./plugin/markdown/markdown.js"></script>
+    <script src="./plugin/highlight/highlight.js"></script>
+    <script src="./plugin/zoom/zoom.js"></script>
+    <script src="./plugin/notes/notes.js"></script>
+    <script src="./plugin/math/math.js"></script>
+    <script src="https://cdn.tonycrane.cc/heti/heti.js"></script>
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        slideNumber: true,
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3
+        ]
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"transition":"fade","transitionSpeed":"fast","center":false,"slideNumber":"c/t","width":1000,"_":["./src/1-1/lec8.md"],"scripts":"https://cdn.tonycrane.cc/heti/heti.js,js/heti_worker.js","template":"template.html","static":"../site/lec8","assets-dir":"assets","assetsDir":"assets"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options).then(() => {
+        document.querySelector(".backgrounds").setAttribute("style", document.querySelector(".slides").style.cssText);
+        
+        // Load heti_worker.js after Heti library is ready
+        function loadHetiWorker() {
+          if (typeof Heti !== 'undefined') {
+            const hetiScript = document.createElement('script');
+            hetiScript.src = 'assets/js/heti_worker.js';
+            document.head.appendChild(hetiScript);
+          } else {
+            setTimeout(loadHetiWorker, 100);
+          }
+        }
+        loadHetiWorker();
+      });
+      Reveal.on('overviewshown', event => {
+        document.querySelector(".backgrounds").setAttribute("style", "");
+      });
+      Reveal.on('overviewhidden', event => {
+        document.querySelector(".backgrounds").setAttribute("style", document.querySelector(".slides").style.cssText);
+      });
+      Reveal.on('resize', event => {
+        document.querySelector(".backgrounds").setAttribute("style", document.querySelector(".slides").style.cssText);
+      });
+    </script>
+  </body>
+</html>
